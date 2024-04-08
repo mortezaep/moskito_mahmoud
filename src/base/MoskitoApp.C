@@ -19,14 +19,15 @@ MoskitoApp::MoskitoApp(InputParameters parameters) : MooseApp(parameters)
 
 MoskitoApp::~MoskitoApp() {}
 
-void 
-MoskitoApp::registerAll(Factory & f, ActionFactory & af, Syntax & s)
+void
+MoskitoApp::registerAll(Factory & f, ActionFactory & af, Syntax & syntax)
 {
-  ModulesApp::registerAllObjects<MoskitoApp>(f, af, s);
+  ModulesApp::registerAllObjects<MoskitoApp>(f, af, syntax);
   Registry::registerObjectsTo(f, {"MoskitoApp"});
   Registry::registerActionsTo(af, {"MoskitoApp"});
 
   /* register custom execute flags, action syntax, etc. here */
+  registerSyntax("convectiondiffusionAction", "convectiondiffusion");
 }
 
 void
